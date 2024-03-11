@@ -6,8 +6,11 @@ This repo includes a tutorial for both running the pipeline from the cloud (_Via
 ## Steps in the pipeline:
 
 __1. extract valid reads by extractValidReads_UMIspecial2.py.__ This scripts extract R1 with valid cell barcode (allow 1 mismatch) and attach the cell barcode&UMI to the header of corresponding R2; Of note, we did NOT filter reads based on UMI quality because UMI is not used in quantifying expression levels for bulk RNA-seq. For details, refer to the Supplementary Methods of our paper. 
+
 __2. standard Quality Control (QC) procedures of the reads quality.__ For QC, we use FastQC, Picard, RSEQC to create qc outputs.
+
 __3. A STAR pipeline to align valid reads to the genome.__ This module includes Quality Control and Genome Alignment using STAR. Parameters were optimized for _C. elegans_ genome.
+
 __4. A ESAT module to count reads for each feature.__ This step includes feature counting by ESAT and a wrapper script (cleanLowEndUmis_withRaw_forBulk.py) to convert the table formats. Please note that the file name (cleanLowEndUmis_withRaw_forBulk.py) was due to a historical reason and does not reflect the function of the script. No UMI cleaning operations were executed here. 
 
 ##### Inputs:
